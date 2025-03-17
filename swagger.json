@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "AI Agent API",
+      "description": "API for generating AI responses using OpenAI"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/api/ai/chat/agent": {
+        "post": {
+          "summary": "Generate AI Response",
+          "description": "Takes a user prompt and returns AI-generated content",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "User input prompt",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prompt": {
+                    "type": "string",
+                    "default": "what is 7 wonders of the world names?"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "response": {
+                    "type": "string",
+                    "default": "Great Wall of China (China), Petra (Jordan), Christ the Redeemer (Brazil), Machu Picchu (Peru), Chichen Itza (Mexico), Roman Colosseum (Italy) and Taj Mahal (India)"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+  
